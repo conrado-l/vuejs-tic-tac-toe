@@ -1,7 +1,7 @@
-<script setup>
-defineProps({
-  player: String,
-});
+<script setup lang="ts">
+defineProps<{
+  player: string | null;
+}>();
 </script>
 
 <template>
@@ -10,22 +10,22 @@ defineProps({
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // Libs
 import { defineComponent } from "vue";
 
 // Constants
+import { PlayerTypes } from "@/enums/PlayerTypes";
 
 // Styles
 import "@/assets/helpers.css";
 import "@/assets/colors.css";
-import { PlayerTypes } from "@/enums/PlayerTypes";
 
 export default defineComponent({
   name: "TicTacToeSquare",
 
   computed: {
-    classes() {
+    classes(): string {
       if (this.player === PlayerTypes.USER) {
         return "color-red";
       } else if (this.player === PlayerTypes.COMPUTER) {
@@ -34,7 +34,7 @@ export default defineComponent({
       return "default";
     },
 
-    ariaLabel() {
+    ariaLabel(): string {
       if (!this.player) {
         return "An empty clickable square";
       }
