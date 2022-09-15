@@ -1,7 +1,5 @@
-export enum PlayerTypes {
-  USER = "X",
-  COMPUTER = "O",
-}
+import { PlayerTypes } from "@/enums/PlayerTypes";
+
 export const PLAYER_COMPUTER_MOVE_DELAY_MS = 300;
 
 export const WINNING_COMBINATIONS = [

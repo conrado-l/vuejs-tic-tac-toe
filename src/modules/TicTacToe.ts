@@ -1,6 +1,5 @@
 // Constants
 import {
-  PlayerTypes,
   PLAYER_COMPUTER_MOVE_DELAY_MS,
   WINNING_COMBINATIONS,
 } from "@/constants/TicTacToe";
@@ -11,6 +10,9 @@ import { getRandomIntInclusive } from "@/utils/Numbers";
 // Types
 import type { Square } from "@/types/Square";
 import type { Board } from "@/types/Board";
+
+// Enums
+import { PlayerTypes } from "@/enums/PlayerTypes";
 
 export class TicTacToe {
   _board: Board = [];
@@ -58,7 +60,7 @@ export class TicTacToe {
   }
 
   getWinner(): string | null {
-    const flattenBoard = this._board.flat() as Array<string>;
+    const flattenBoard = this._board.flat();
 
     for (let i = 0; i < WINNING_COMBINATIONS.length; i++) {
       const [a, b, c] = WINNING_COMBINATIONS[i];
@@ -109,13 +111,13 @@ export class TicTacToe {
 
   makeComputerMove() {
     setTimeout(() => {
-      const res: Square | null = this.getRandomFreeSquareIndex();
+      const res = this.getRandomFreeSquareIndex();
 
       if (!res) {
         return;
       }
 
-      const { row, column }: Square = this.getRandomFreeSquareIndex();
+      const { row, column } = res;
 
       this.makeMove(PlayerTypes.COMPUTER, row, column);
     }, PLAYER_COMPUTER_MOVE_DELAY_MS);

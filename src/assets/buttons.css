@@ -11,3 +11,13 @@ button {
 button:hover {
   background-color: lightgrey;
 }
+
+.button-red {
+  background-color: var(--c-red);
+  color: var(--c-white);
+}
+
+.button-red:hover {
+  background-color: #d90d0d;
+  color: var(--c-white);
+}

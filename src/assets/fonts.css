@@ -5,3 +5,7 @@
 .font-big {
   font-size: 1.5em;
 }
+
+.bold {
+  font-weight: 700;
+}

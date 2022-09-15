@@ -15,11 +15,11 @@ defineProps({
 import { defineComponent } from "vue";
 
 // Constants
-import { PlayerTypes } from "@/constants/TicTacToe";
 
 // Styles
 import "@/assets/helpers.css";
 import "@/assets/colors.css";
+import { PlayerTypes } from "@/enums/PlayerTypes";
 
 export default defineComponent({
   name: "TicTacToeSquare",

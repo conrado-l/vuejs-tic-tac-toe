@@ -1,20 +1,25 @@
 <template>
   <div class="container">
     <div class="tic-tac-toe">
-      <h1>Tic Tac Toe</h1>
+      <h1 class="text-align-center">Tic Tac Toe</h1>
 
       <!-- Messages -->
-      <p :class="[winnerMessageClass, 'font-big', 'bold']" v-if="winnerMessage">
+      <p
+        :class="[winnerMessageClass, 'bold', 'text-align-center']"
+        v-if="winnerMessage"
+      >
         {{ winnerMessage }}
       </p>
-      <p v-else>Current player: {{ currentPlayer }}</p>
+      <p class="text-align-center" v-else>
+        Current player: {{ currentPlayer }}
+      </p>
       <!---->
 
       <!-- Game board -->
       <div v-if="ticTacToe" class="tic-tac-toe-squares">
         <div class="squares-row" v-for="(row, i) in board" :key="i">
           <TicTacToeSquare
-            v-for="(column, n) in row"
+            v-for="(_, n) in row"
             :key="n"
             :player="board[i][n]"
             @click="onSquareClick(i, n)"
@@ -22,14 +27,22 @@
         </div>
         <!---->
       </div>
+
+      <!-- Restart game button -->
+      <div class="text-align-center">
+        <button
+          class="restart-game-button button-red"
+          @click="ticTacToe.initializeGame"
+        >
+          Restart game
+        </button>
+      </div>
+      <!---->
+
+      <!-- Game instructions/info -->
+      <TicTacToeInstructions class="instructions"></TicTacToeInstructions>
+      <!---->
     </div>
-
-    Restart game button
-    <button @click="ticTacToe.initializeGame">Restart game</button>
-
-    <!-- Game instructions/info -->
-    <!--    <TicTacToeInstructions></TicTacToeInstructions>-->
-    <!---->
   </div>
 </template>
 
@@ -45,13 +58,16 @@ import TicTacToeInstructions from "@/components/TicTacToeInstructions/TicTacToeI
 import { TicTacToe } from "@/modules/TicTacToe";
 
 // Constants
-import { PlayerTypes } from "@/constants/TicTacToe";
 
 // Styles
 import "@/assets/helpers.css";
 import "@/assets/colors.css";
 import "@/assets/buttons.css";
 import "@/assets/fonts.css";
+
+// Types
+import type { Board } from "@/types/Board";
+import { PlayerTypes } from "@/enums/PlayerTypes";
 
 export default defineComponent({
   name: "TicTacToe",
@@ -69,7 +85,7 @@ export default defineComponent({
   },
 
   computed: {
-    board(): Array<Array<string | null>> {
+    board(): Board {
       return this.ticTacToe._board;
     },
 
@@ -101,11 +117,6 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-}
-
-.tic-tac-toe {
-  margin: 0 auto;
 }
 
 .tic-tac-toe-squares {
@@ -115,5 +126,14 @@ export default defineComponent({
 .squares-row {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.restart-game-button {
+  margin-top: 2.5em;
+}
+
+.instructions {
+  margin-top: 2em;
 }
 </style>
