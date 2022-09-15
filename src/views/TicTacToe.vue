@@ -1,7 +1,13 @@
 <template>
   <div class="container">
     <div class="tic-tac-toe">
-      <h1 class="text-align-center">Tic Tac Toe</h1>
+      <!-- Header-->
+      <div class="header-container">
+        <img src="/icons/tic-tac-toe.svg" alt="Tic Tac Toe icon" />
+        <h1 class="text-align-center header">Tic Tac Toe</h1>
+        <img src="/icons/tic-tac-toe.svg" alt="Tic Tac Toe icon" />
+      </div>
+      <!---->
 
       <!-- Messages -->
       <p
@@ -117,6 +123,16 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  margin: 0 0.3em;
 }
 
 .tic-tac-toe-squares {
