@@ -4,7 +4,7 @@ This a Tic Tac Toe game, it consists of a 3x3 square in which the goal is to fil
 a diagonal way, the first one to do it, user or computer, wins.
 
 ## Pre-setup requirements
-Use Node `16.12.0`+.
+Use Node `16.14.0`+.
 
 ## Project Setup
 
